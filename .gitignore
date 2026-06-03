@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+venv311/
+env/
+ENV/
+
+# Environment Variables & Secrets
+.env
+.venv
+
+# OpenCV & MediaPipe / Notebooks
+.ipynb_checkpoints/
+.directory
+
+# Database Files
+*.sqlite3
+*.db
+*.log
+
+# IDE & OS Settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
