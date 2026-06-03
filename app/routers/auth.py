@@ -4,17 +4,14 @@ from datetime import datetime, timedelta
 
 from app.utils.email import send_email
 from app.utils.otp import generate_otp
-
+from app.schemas.auth import (
+    UserRegister, UserLogin, VerifyOTP, 
+    ForgotPasswordRequest, ResetPasswordVerify # Yeh import ab kaam karega
+)
 from app.db.database import get_db
 
 from app.models.user import User
 from app.models.otp import OTPVerification
-
-from app.schemas.auth import (
-    UserRegister,
-    UserLogin,
-    VerifyOTP,
-)
 
 from app.core.security import (
     hash_password,
@@ -162,7 +159,52 @@ def login(
         "token_type": "bearer"
     }
 
+@router.post("/forgot-password")
+def forgot_password(data: ForgotPasswordRequest, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == data.email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
 
-@router.post("/logout")
-def logout():
-    return {"message": "User logged out successfully"}
+    otp = generate_otp()
+    
+    # Purana OTP record delete karein agar exist karta ho
+    db.query(OTPVerification).filter(
+        OTPVerification.user_id == user.id, 
+        OTPVerification.purpose == "forgot_password"
+    ).delete()
+    
+    otp_record = OTPVerification(
+        user_id=user.id,
+        otp=otp,
+        purpose="forgot_password",
+        expires_at=datetime.utcnow() + timedelta(minutes=10)
+    )
+    db.add(otp_record)
+    db.commit()
+
+    # Response body mein OTP bheja ja raha hai
+    return {
+        "message": "OTP generated successfully",
+        "otp": otp  # Swagger response mein yahan dikhega
+    }
+
+@router.post("/reset-password")
+def reset_password(data: ResetPasswordVerify, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == data.email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    otp_record = db.query(OTPVerification).filter(
+        OTPVerification.user_id == user.id,
+        OTPVerification.otp == data.otp,
+        OTPVerification.purpose == "forgot_password"
+    ).first()
+
+    if not otp_record or otp_record.expires_at < datetime.utcnow():
+        raise HTTPException(status_code=400, detail="Invalid or expired OTP")
+
+    user.password = hash_password(data.new_password)
+    db.delete(otp_record)
+    db.commit()
+
+    return {"message": "Password reset successfully"}
