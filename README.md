@@ -31,10 +31,8 @@
 - AI Workflow
 - Machine Learning Pipeline
 - Database Schema
-- Screenshots
 - Future Improvements
-- Contributing
-- License
+
 - Author
 
 ---
@@ -53,7 +51,6 @@ The application aims to make healthy eating simple, personalized, and accessible
 
 ## 👤 User Features
 
-- User Authentication
 - Personalized Profile
 - Daily Calorie Calculation
 - BMI Calculator
@@ -61,7 +58,6 @@ The application aims to make healthy eating simple, personalized, and accessible
 - AI Meal Recommendations
 - Weekly Meal Planner
 - Nutrition Breakdown
-- Water Intake Recommendation
 - Weight Tracking
 - Fitness Goal Tracking
 - Allergy Detection
@@ -158,16 +154,6 @@ Authentication         AI Recommendation       Nutrition Engine
 
 # 🛠 Tech Stack
 
-## Frontend
-
-- React.js
-- Next.js
-- Tailwind CSS
-- TypeScript
-- Axios
-
----
-
 ## Backend
 
 - Python
@@ -191,18 +177,14 @@ Authentication         AI Recommendation       Nutrition Engine
 
 ## Database
 
-- PostgreSQL
 - SQLite (Development)
 
 ---
 
 ## DevOps
 
-- Docker
 - GitHub Actions
 - Render
-- Railway
-- Vercel
 
 ---
 
@@ -221,14 +203,6 @@ Chew-AI/
 │   ├── ai/
 │   ├── config/
 │   └── main.py
-│
-├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   ├── assets/
-│   └── styles/
-│
 ├── datasets/
 │
 ├── notebooks/
@@ -241,7 +215,6 @@ Chew-AI/
 │
 ├── requirements.txt
 │
-├── Dockerfile
 │
 ├── .env
 │
@@ -255,11 +228,13 @@ Chew-AI/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/chew-ai.git
+git clone https://github.com/Hariom-patidar-tech/Chewbe-AI-Diet-Assistant
+.git
 ```
 
 ```bash
-cd chew-ai
+cd Chewbe-AI-Diet-Assistant
+
 ```
 
 ---
@@ -322,39 +297,11 @@ uvicorn main:app --reload
 
 ---
 
-## Frontend
-
-```bash
-npm install
-```
-
-```bash
-npm run dev
-```
 
 ---
 
 # 🌐 API Endpoints
 
-## Authentication
-
-```
-POST /register
-POST /login
-GET  /profile
-```
-
----
-
-## Diet
-
-```
-POST /diet-plan
-GET  /daily-plan
-GET  /weekly-plan
-```
-
----
 
 ## Nutrition
 
@@ -418,10 +365,7 @@ Model Training
         │
         ▼
 Evaluation
-        │
-        ▼
-Deployment
-```
+
 
 ---
 
@@ -467,23 +411,6 @@ Deployment
 
 ---
 
-# 📷 Screenshots
-
-```
-Add screenshots here
-
-Home Page
-
-Dashboard
-
-Diet Recommendation
-
-Nutrition Analysis
-
-Chat Assistant
-
-Weekly Meal Planner
-```
 
 ---
 
@@ -506,35 +433,10 @@ Weekly Meal Planner
 
 ---
 
-# 🧪 Testing
-
-Run all tests
-
-```bash
-pytest
-```
-
-Coverage
-
-```bash
-pytest --cov
-```
 
 ---
 
-# 🚀 Deployment
 
-### Docker
-
-```bash
-docker build -t chew-ai .
-```
-
-```bash
-docker run -p 8000:8000 chew-ai
-```
-
----
 
 ### Render
 
@@ -552,37 +454,10 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 
 ---
 
-# 🤝 Contributing
 
-Contributions are always welcome.
-
-1. Fork the repository
-
-2. Create a new branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-4. Push
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
-
----
 
 # 📈 Roadmap
 
-- User Authentication
 - AI Nutrition Engine
 - Meal Recommendation
 - Weekly Planner
@@ -593,9 +468,6 @@ git push origin feature-name
 
 ---
 
-# 📜 License
-
-This project is licensed under the **MIT License**.
 
 ---
 
@@ -616,7 +488,5 @@ AI & Machine Learning Engineer
 <div align="center">
 
 ## ⭐ If you like this project, don't forget to Star the repository!
-
-**Made with ❤️ using Artificial Intelligence**
 
 </div>
